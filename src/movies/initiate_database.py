@@ -6,7 +6,8 @@ from datetime import datetime
 def main():
     engine = m.engine
     db = m.Base
-    #Se usa el Design Pattern de Factory en el modulo de sessionmaker al crear diferentes objetos de sesion sin tener la logica de creacion en esta clase 
+    #Se usa el Design Pattern de *Factory* en el modulo de sessionmaker al crear diferentes objetos de sesion sin tener la
+    #logica de creacion en esta clase
     Session = sessionmaker(engine)
     with Session() as session:
 

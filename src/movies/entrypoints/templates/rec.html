@@ -1,3 +1,14 @@
+<!--Utilizamos el *Open Closed Principle* en nuestro proyecto al no cambiar el código proporcionado por el profesor y nada más construir encima de él.
+Además de que programamos las funcionalidades para ser fácilmente actualizables si acaso se necesitan extraer más datos, cambiar parámetros, etc.
+
+También se utilizó el *Directional Control* con la implementación de la base de datos y la despliega de resultados ordenados, ya que si se modifica
+algo en los resultados ordenados no modifica la base de datos, la base de datos no modifica el csv y el csv no modifica la base de datos de IMDB.
+Si se modifica algo en la base de datos de IMDB en cambio, cambian los resultados de el csv, la base de datos y los resultados ordenados cuando se
+vuelva a construir el proyecto.
+
+Finalmente se utilizó el *Interface Segregation Principle* al hacer que el usuario nada más interactúe con una interfaz (La forma donde se ingresa el
+nombre de usuario y los demás datos), haciendo que el usuario nada más vea lo que necesita ver. -->
+
 <form method="POST">
     <label for="username">username:</label>
     <input type = "text" name="username" required><br>
