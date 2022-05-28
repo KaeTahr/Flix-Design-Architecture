@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, Blueprint
 import models
+import initiate_database
 import Recommendations as R
 
 app = Flask(__name__)
@@ -47,4 +48,11 @@ def form_post():
     rec_list = rec_res.run_algorithm()
     for i in rec_list:
         rec_list_titles.append(i.movie_title)
+
+    if len(rec_list) == 0:
+        initiate_database.main()
+        rec_list = rec_res.run_algorithm()
+        for i in rec_list:
+            rec_list_titles.append(i.movie_title)
+
     return render_template('results.html', username=username, results=rec_list_titles)
