@@ -1,0 +1,8 @@
+<h1> Hello, {{username}} </h1>
+<p>Here are our recommendations: </p>
+
+<ol>
+    {% for i in  results: %}
+    <li>{{i}}</li>
+    {% endfor %}
+</ol>
