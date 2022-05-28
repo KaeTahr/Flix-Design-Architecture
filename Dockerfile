@@ -25,6 +25,7 @@ RUN mkdir -p /src
 
 COPY src/ /src/
 RUN pip install -e /src
+RUN python /src/movies/movie_fetcher.py
 COPY tests/ /tests/
 
 WORKDIR /src
