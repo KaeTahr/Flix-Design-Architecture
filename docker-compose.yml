@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  app:
+    container_name: movies
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    volumes:
+      - ./src:/src
+      - ./tests:/tests
+    ports:
+      - "5005:80"
+
+  postgres:
+    container_name: movies-db
+    image: postgres:9.6
+    environment:
+        POSTGRES_USER: ${DB_USER}
+        POSTGRES_DB: ${DB_NAME}
+        POSTGRES_PASSWORD: ${DB_PASS}
+        PGPORT: 5432
+        PGOPTS: "-i"
+    ports:
+      - "5432:5432"
