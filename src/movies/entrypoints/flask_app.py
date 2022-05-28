@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, Blueprint
 import models
-import recommendations as R
+import Recommendations as R
 
 app = Flask(__name__)
 models.start_mappers()
