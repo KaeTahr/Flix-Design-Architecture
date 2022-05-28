@@ -8,3 +8,7 @@ models.start_mappers()
 @app.route("/hello", methods=["GET"])
 def hello_world():
     return "Hello World!", 200
+
+@app.route("/", methods=["GET"])
+def display_recommendations():
+    hello_world()
