@@ -17,11 +17,7 @@ services:
   postgres:
     container_name: movies-db
     image: postgres:9.6
-    environment:
-        POSTGRES_USER: ${DB_USER}
-        POSTGRES_DB: ${DB_NAME}
-        POSTGRES_PASSWORD: ${DB_PASS}
-        PGPORT: 5432
-        PGOPTS: "-i"
+    env_file: config/dev.env
+
     ports:
       - "5432:5432"
