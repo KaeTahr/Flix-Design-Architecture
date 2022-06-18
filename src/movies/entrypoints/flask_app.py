@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, Blueprint
 import models
 import initiate_database
-import Recommendations as R
+import form_verifier
 
 app = Flask(__name__)
 models.start_mappers()
@@ -26,26 +26,13 @@ def form_post():
     order = request.form['order']
 
     pref = []
-    if p1:
-        pref.append(int(p1))
-    if p2:
-        pref.append(int(p2))
-    if p3:
-        pref.append(int(p3))
-    if p4:
-        pref.append(int(p4))
-    if p5:
-        pref.append(int(p5))
+    pref = form_verifier.parseform(p1,p2,p3,p4,p5)
+
     if len(pref) != 3:
         return 'please submit only 3 preferences'
 
-    if order == 'Ascending':
-        rec_res = R.StrategyRecommendationAsc(pref[0], pref[1], pref[2])
-    else:
-        rec_res = R.StrategyRecommendationDesc(pref[0], pref[1], pref[2])
-
+    rec_list = form_verifier.orderPrefs(order, pref)
     rec_list_titles = []
-    rec_list = rec_res.run_algorithm()
     for i in rec_list:
         rec_list_titles.append(i.movie_title)
 
