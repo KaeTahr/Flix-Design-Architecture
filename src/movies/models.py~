@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.ext.declarative import declarative_base
 
-dbname='postgresdb:5432/movies'
+dbname='localhost:5432/movies'
 
 def get_postgres_uri():
     host = os.environ.get("DB_HOST", "postgres")

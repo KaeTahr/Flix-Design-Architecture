@@ -11,11 +11,11 @@ content = Blueprint("rec", __name__, template_folder="templates/")
 def hello_world():
     return "Hello World!", 200
 
-@app.route("/")
+@app.route("/rec")
 def display_recommendations():
     return render_template('rec.html')
 
-@app.route("/", methods=['POST'])
+@app.route("/rec", methods=['POST'])
 def form_post():
     username = request.form['username']
     p1 = request.form.get('p1')
@@ -38,6 +38,7 @@ def form_post():
 
     if len(rec_list) == 0:
         initiate_database.main()
+        rec_list = rec_res.run_algorithm()
         for i in rec_list:
             rec_list_titles.append(i.movie_title)
 
