@@ -18,7 +18,7 @@ def get_postgres_uri():
     port = 5432
     password = os.environ.get("DB_PASS", "abc123")
     user, db_name = "movies", "movies"
-    return f"postgres://{user}:{password}@{host}:{port}/{db_name}"
+    return f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
 
 
 Base = declarative_base(
